@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+//  react-router-dom 추가
+import { Route, Link, BrowserRouter, Switch } from 'react-router-dom';
+
+
+import ProductList from './components/ProductList';
+import Register from './components/register/Register';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="Menu">
+        <div>
+          <Link to=''>HOME</Link>
+        </div>
+        <div>
+          <Link to='/productList'>상품목록</Link>
+        </div>
+        <div>
+          <Link to='/register'>회원가입</Link>
+        </div>
+      </div>
+
+      <Switch>
+        <Route path="/" exact></Route>
+        <Route path="/productList" component={ProductList}></Route>
+        <Route path="/register" component={Register}></Route>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
